@@ -1,0 +1,83 @@
+# ETL Pipeline Configuration
+
+pipeline:
+  name: ecommerce_etl_pipeline
+  version: 1.0.0
+  environment: development  # development, staging, production
+
+etl:
+  # Extract configuration
+  extract:
+    batch_size: 10000
+    incremental_column: updated_at
+    lookback_days: 7
+    sources:
+      - orders
+      - order_items
+      - customers
+      - products
+      - payments
+      - user_events
+  
+  # Transform configuration
+  transform:
+    enable_validation: true
+    enable_profiling: false
+    null_handling: replace  # replace, drop, skip
+    duplicate_handling: drop  # drop, keep_first, keep_last
+  
+  # Load configuration
+  load:
+    strategy: incremental  # incremental, full_refresh
+    batch_size: 5000
+    enable_upsert: true
+    truncate_staging: false
+
+# Data Quality Configuration
+data_quality:
+  enable_checks: true
+  fail_on_error: false
+  checks:
+    schema_validation: true
+    null_checks: true
+    uniqueness_checks: true
+    referential_integrity: true
+    business_rules: true
+    anomaly_detection: true
+  
+  thresholds:
+    max_null_percentage: 5
+    max_duplicate_percentage: 1
+    min_row_count: 100
+    max_processing_time_minutes: 60
+
+# Airflow Configuration
+airflow:
+  schedule_interval: "0 2 * * *"  # Daily at 2 AM
+  max_retries: 3
+  retry_delay_minutes: 5
+  email_on_failure: true
+  email_on_retry: false
+  catchup: false
+  depends_on_past: false
+
+# Monitoring Configuration
+monitoring:
+  enable_logging: true
+  log_level: INFO  # DEBUG, INFO, WARNING, ERROR
+  enable_metrics: true
+  enable_alerts: true
+  alert_channels:
+    - email
+    # - slack
+    # - pagerduty
+
+# Performance Configuration
+performance:
+  parallel_processing: true
+  max_workers: 4
+  chunk_size: 10000
+  use_bulk_insert: true
+  vacuum_after_load: true
+  analyze_after_load: true
+

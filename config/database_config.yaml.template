@@ -1,0 +1,35 @@
+# Database Configuration Template
+# Copy this file to database_config.yaml and update with your credentials
+
+# Source database (optional - not needed for demo)
+# Uncomment if you want to simulate extraction from a separate source database
+# source_db:
+#   host: localhost
+#   port: 5432
+#   database: ecommerce_source
+#   user: postgres
+#   password: YOUR_PASSWORD_HERE
+#   schema: public
+
+data_warehouse:
+  host: localhost
+  port: 5432
+  database: ecommerce_dwh
+  user: postgres
+  password: YOUR_PASSWORD_HERE  # ← Change this to your actual password
+  schemas:
+    staging: staging
+    core: core
+    analytics: analytics
+
+connection_pool:
+  min_connections: 2
+  max_connections: 10
+  connection_timeout: 30
+  idle_timeout: 600
+
+# For production, use environment variables:
+# export DB_HOST=your_host
+# export DB_USER=your_user
+# export DB_PASSWORD=your_password
+

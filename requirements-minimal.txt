@@ -1,0 +1,27 @@
+# Minimal Requirements for ETL Pipeline
+# Use this for quick setup without Airflow
+
+# Core Dependencies
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Data Processing
+pandas==2.0.3
+numpy==1.24.3
+
+# Database
+psycopg2-binary==2.9.6
+SQLAlchemy==2.0.19
+
+# Configuration
+PyYAML==6.0.1
+
+# Logging
+loguru==0.7.0
+
+# Data Generation
+Faker==19.2.0
+
+# Utilities
+requests==2.31.0
+

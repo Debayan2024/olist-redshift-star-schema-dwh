@@ -1,0 +1,42 @@
+# Core Dependencies
+python-dateutil==2.8.2
+pytz==2023.3
+
+# Data Processing
+pandas==2.0.3
+numpy==1.24.3
+
+# Database
+psycopg2-binary==2.9.6
+SQLAlchemy==2.0.19
+
+# Workflow Orchestration
+apache-airflow==2.6.3
+apache-airflow-providers-postgres==5.5.1
+
+# Configuration
+PyYAML==6.0.1
+python-dotenv==1.0.0
+
+# Data Validation
+great-expectations==0.17.10
+pydantic==2.1.1
+
+# Logging and Monitoring
+loguru==0.7.0
+
+# Testing
+pytest==7.4.0
+pytest-cov==4.1.0
+
+# Data Generation (for sample data)
+Faker==19.2.0
+
+# Utilities
+requests==2.31.0
+click==8.1.6
+
+# Optional: Big Data (commented out for basic setup)
+# pyspark==3.4.1
+# kafka-python==2.0.2
+
